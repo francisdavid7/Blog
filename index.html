@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="assets/Favicon/blog-solid-full.svg" type="image/x-icon">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindplus/elements@1" type="module"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/app.js" defer></script>
+    <title>Blog</title>
+</head>
+
+<body class="font-sans">
+
+    <!-- Headers -->
+
+    <!-- Header One -->
+    <div class="top-bar flex flex-wrap items-center p-4 text-lg">
+        <!-- Language Selector -->
+        <el-dropdown class="inline-block">
+            <button
+                class="cursor-pointer inline-flex w-full items-center justify-center gap-x-1.5 rounded-md px-3 py-2 text-sm font-semibold inset-ring-1 inset-ring-white/5 hover:bg-white/20">
+                <i class="fa-solid fa-globe"></i>
+                <span>English</span>
+                <svg viewBox="0 0 20 20" fill="currentColor" data-slot="icon" aria-hidden="true"
+                    class="-mr-1 size-5 text-gray-400">
+                    <path
+                        d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z"
+                        clip-rule="evenodd" fill-rule="evenodd" />
+                </svg>
+            </button>
+
+            <el-menu anchor="bottom end" popover
+                class="border border-white w-56 origin-top-right rounded-md bg-red-600 outline-1 -outline-offset-1 outline-white/10 transition transition-discrete [--anchor-gap:--spacing(2)] data-closed:scale-95 data-closed:transform data-closed:opacity-0 data-enter:duration-100 data-enter:ease-out data-leave:duration-75 data-leave:ease-in">
+                <div class="py-1">
+                    <a href="#"
+                        class="block px-4 py-2 text-sm text-white focus:bg-white/5 focus:text-white focus:outline-hidden">French</a>
+                    <a href="#"
+                        class="block px-4 py-2 text-sm text-white focus:bg-white/5 focus:text-white focus:outline-hidden">Spanish</a>
+                    <a href="#"
+                        class="block px-4 py-2 text-sm text-white focus:bg-white/5 focus:text-white focus:outline-hidden">Chinese</a>
+                    <a href="#"
+                        class="block px-4 py-2 text-sm text-white focus:bg-white/5 focus:text-white focus:outline-hidden">German</a>
+                    <a href="#"
+                        class="block px-4 py-2 text-sm text-white focus:bg-white/5 focus:text-white focus:outline-hidden">Japanese</a>
+                </div>
+            </el-menu>
+        </el-dropdown>
+
+        <div class="ml-auto flex items-center flex-wrap">
+            <a href="#" id="login-btn" class="mx-2 hover:text-red-600 transition">Login</a>
+            <a href="#" id="signup-btn"
+                class="bg-red-600 text-white mx-2 hover:bg-red-700 transition py-2 px-4 rounded">Sign Up</a>
+        </div>
+    </div>
+    <!-- Header One Ends -->
+
+    <!-- Login or Signup Modal -->
+
+    <div id="auth-modal" class="h-full fixed inset-0 flex items-center justify-center bg-black/50 z-100">
+        <div class="min-h-screen flex items-center justify-center">
+
+            <div id="signup-form" class="bg-white shadow-lg rounded-lg p-8 md:w-[400px] max-w-full">
+                <h2 class="text-2xl font-bold text-center text-gray-800 mb-6">Create an Account</h2>
+                <form onsubmit="goToNewPage(event)" method="POST">
+                    <div class="mb-4">
+                        <label for="name" class="block text-sm font-medium text-gray-700">Full Name</label>
+                        <input type="text" id="name" name="name"
+                            class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-0 focus:outline-none focus:border-gray-200"
+                            placeholder="John Doe" required>
+                    </div>
+                    <div class="mb-4">
+                        <label for="email" class="block text-sm font-medium text-gray-700">Email Address</label>
+                        <input type="email" id="email" name="email"
+                            class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-0 focus:outline-none focus:border-gray-200"
+                            placeholder="example@domain.com" required>
+                    </div>
+                    <div class="mb-4">
+                        <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
+                        <input type="password" id="password" name="password"
+                            class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-0 focus:border-gray-200"
+                            placeholder="********" required>
+                    </div>
+                    <div class="mb-4">
+                        <label for="confirm-password" class="block text-sm font-medium text-gray-700">Confirm
+                            Password</label>
+                        <input type="password" id="confirm-password" name="confirm-password"
+                            class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-0 focus:outline-none focus:border-gray-200"
+                            placeholder="********" required>
+                    </div>
+                    <button type="submit"
+                        class="w-full bg-red-700 text-white py-2 px-4 rounded-md hover:bg-red-800 focus:outline-none focus:ring-2 focus:ring-red-700 focus:ring-offset-2">Sign
+                        Up</button>
+                </form>
+                <p class="text-center text-sm text-gray-600 mt-4">
+                    Already have an account? <a href="#" class="text-red-700 hover:text-red-800 hover:underline">Log
+                        in</a>
+                </p>
+            </div>
+
+            <div id="login-form" class="bg-white shadow-lg rounded-lg p-8 md:w-[400px] max-w-full">
+                <h2 class="text-2xl font-bold text-center text-gray-800 mb-6">Sign In</h2>
+                <form onsubmit="loginsucess(event)" method="POST">
+                    <div class="mb-4">
+                        <label for="email" class="block text-sm font-medium text-gray-700">Email Address</label>
+                        <input type="email" id="email" name="email"
+                            class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-0 focus:outline-none focus:border-gray-200"
+                            placeholder="example@domain.com" required>
+                    </div>
+                    <div class="mb-4">
+                        <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
+                        <input type="password" id="password" name="password"
+                            class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-0 focus:border-gray-200"
+                            placeholder="********" required>
+                    </div>
+                    
+                    <button type="submit"
+                        class="w-full bg-red-700 text-white py-2 px-4 rounded-md hover:bg-red-800 focus:outline-none focus:ring-2 focus:ring-red-700 focus:ring-offset-2">Sign
+                        In</button>
+                </form>
+                <p class="text-center text-sm text-gray-600 mt-4">
+                    Already have an account? <a href="#" class="text-red-700 hover:text-red-800 hover:underline">Sign up</a>
+                </p>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Header Two | Navigation -->
+    <header class="flex flex-wrap items-center justify-between p-4 bg-red-600 text-white">
+        <a href="#" class="text-3xl font-bold"><i class="fa-solid fa-blog"></i></a>
+        <nav class="hidden md:flex text-xl">
+            <a href="#" class="mx-2 hover:text-red-300 transition">Blogs</a>
+            <a href="#" class="mx-2 hover:text-red-300 transition">Newsletters</a>
+            <a href="#" class="mx-2 hover:text-red-300 transition">Videos</a>
+            <a href="#" class="mx-2 hover:text-red-300 transition">Podcasts</a>
+            <a href="#" class="mx-2 hover:text-red-300 transition">Resources</a>
+        </nav>
+
+        <div class="search flex items-center mt-4 md:mt-0">
+            <input type="text" placeholder="Search..."
+                class="p-2 rounded outline-none border border-white focus:border-red-300 transition">
+            <button class="cursor-pointer p-2 bg-white text-red-600 rounded hover:bg-gray-200"><i
+                    class="fa-solid fa-magnifying-glass"></i></button>
+        </div>
+    </header>
+    <!-- Header section ends -->
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section class="p-4 relative h-90">
+            <img class="absolute inset-0 w-full h-full object-cover" src="assets/Images/bg-image.png" alt="">
+
+            <div class="overlay absolute inset-0 text-violet-950 items-center justify-center"></div>
+
+            <div class="content relative z-10 flex flex-col items-center justify-center h-full text-center px-4">
+                <i class="fa-solid fa-forward text-3xl text-blue-500"></i>
+                <h1 class="text-4xl md:text-5xl text-red-700 font-bold">Latest News & Article</h1>
+                <p class="mt-2 md:text-2xl text-red-900 text-lg">Stay updated with the latest trends and insights in the
+                    tech world.</p>
+            </div>
+            <!-- Hero Section Ends -->
+        </section>
+
+        <h2 class="text-3xl font-bold my-13 text-red-700 text-center">Featured Articles</h2>
+
+        <section id="featured-articles"
+            class="pt-0 py-6 px-4 md:px-[4rem] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <!-- post fetched from JavaScript -->
+        </section>
+
+        <!-- Call to Action Section -->
+        <section class="bg-gray-100 py-8">
+            <div class="container mx-auto px-4 text-center">
+                <h2 class="text-3xl font-bold text-red-700 mb-4">Join Our Community</h2>
+                <p class="text-lg text-gray-700 mb-6">Stay connected and never miss an update. Be part of our growing
+                    community
+                    of tech enthusiasts.</p>
+                <a href="#" class="bg-red-600 text-white py-3 px-6 rounded hover:bg-red-700 transition">Sign Up Now</a>
+            </div>
+        </section>
+        <!-- Call to Action Section Ends -->
+
+        <!-- Contact Us Section -->
+        <section class="py-8">
+            <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div>
+                    <h2 class="text-3xl font-bold text-red-700 mb-4">Contact Us</h2>
+                    <p class="text-lg text-gray-700 mb-6">Have questions or feedback? We'd love to hear from you. Reach
+                        out to
+                        us anytime!</p>
+                    <ul class="space-y-2">
+                        <li><i class="fa-solid fa-envelope text-red-600"></i> Email: support@blog.com</li>
+                        <li><i class="fa-solid fa-phone text-red-600"></i> Phone: +1 234 567 890</li>
+                        <li><i class="fa-solid fa-map-marker-alt text-red-600"></i> Address: 123 Blog Street, Tech City
+                        </li>
+                    </ul>
+                </div>
+                <form class="flex flex-col space-y-4">
+                    <input type="text" placeholder="Your Name"
+                        class="p-2 rounded border border-gray-300 focus:border-red-300 outline-none">
+                    <input type="email" placeholder="Your Email"
+                        class="p-2 rounded border border-gray-300 focus:border-red-300 outline-none">
+                    <textarea placeholder="Your Message" rows="4"
+                        class="p-2 rounded border border-gray-300 focus:border-red-300 outline-none"></textarea>
+                    <button type="submit"
+                        class="bg-red-600 text-white cursor-pointer py-2 px-4 rounded hover:bg-red-700 transition">Send
+                        Message</button>
+                </form>
+            </div>
+        </section>
+        <!-- Contact Us Section Ends -->
+
+    </main>
+    <!-- Main content ends -->
+
+    <!-- Footer -->
+    <footer class="bg-red-600 text-white py-8">
+        <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- About Section -->
+            <div>
+                <h3 class="text-xl font-bold mb-4">About Us</h3>
+                <p class="text-sm">
+                    Welcome to our blog! Stay informed with the latest news, articles, and resources in the tech world.
+                    Join
+                    our community today!
+                </p>
+            </div>
+
+            <!-- Quick Links -->
+            <div>
+                <h3 class="text-xl font-bold mb-4">Quick Links</h3>
+                <ul class="space-y-2">
+                    <li><a href="#" class="hover:text-red-300 transition">Home</a></li>
+                    <li><a href="#" class="hover:text-red-300 transition">Blogs</a></li>
+                    <li><a href="#" class="hover:text-red-300 transition">Newsletters</a></li>
+                    <li><a href="#" class="hover:text-red-300 transition">Videos</a></li>
+                    <li><a href="#" class="hover:text-red-300 transition">Contact Us</a></li>
+                </ul>
+            </div>
+
+            <!-- Newsletter Subscription -->
+            <div>
+                <h3 class="text-xl font-bold mb-4">Subscribe to Our Newsletter</h3>
+                <p class="text-sm mb-4">Get the latest updates and articles delivered to your inbox.</p>
+                <form class="flex flex-col space-y-2">
+                    <input type="email" placeholder="Enter your email"
+                        class="p-2 rounded outline-none border border-white focus:border-red-300 transition">
+                    <button type="submit"
+                        class="bg-white text-red-600 py-2 px-4 rounded hover:bg-gray-200 transition cursor-pointer">Subscribe</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Social Media Links -->
+        <div class="mt-8 border-t border-white/20 pt-4">
+            <div class="container mx-auto px-4 flex flex-col md:flex-row items-center justify-between">
+                <p class="text-sm">&copy; 2025 Blog. All rights reserved.</p>
+                <div class="flex space-x-4">
+                    <a href="#" class="hover:text-red-300 transition"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" class="hover:text-red-300 transition"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="#" class="hover:text-red-300 transition"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" class="hover:text-red-300 transition"><i class="fa-brands fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Footer Ends -->
+
+</body>
+
+</html>
