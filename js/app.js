@@ -60,7 +60,7 @@ loginFormContainer.addEventListener('click', (e) => {
 // Function to fetch posts and images
 async function fetchPosts() {
     try {
-        // Fetch user images
+        // Fetch images
         const accessKey = "3UbGku0DL1R6vHMJxgQsJx26B4YsOkaFd-vFadyYZpA";
 
         const imageResponse = await fetch(`https://api.unsplash.com/photos/random?count=9&query=blog&client_id=${accessKey}`);
@@ -84,7 +84,8 @@ async function fetchPosts() {
                 <div class="p-4 pb-8"> 
                     <h3 class="text-xl font-semibold mb-2 text-blue-900">${post.title}</h3>
                     <p class="post-body text-gray-700 mb-4 truncate text-ellipsis white-space-nowrap">${post.body}</p>
-                    <a href="${post.id}" class="text-red-600 block mt-4 w-fit hover:bg-red-600 transition text-white py-2 px-4 bg-red-700 rounded">Read More</a>
+                    <p class="text-sm text-gray-400">Tags: ${post.tags.join(', ')}</p>
+                    <a href="post.html?id=${post.id}" class="text-red-600 block mt-4 w-fit hover:bg-red-600 transition text-white py-2 px-4 bg-red-700 rounded">Read More</a>
                 </div>`
 
             postContainer.appendChild(postElement);
