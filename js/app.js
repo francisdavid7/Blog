@@ -3,7 +3,7 @@ const signupBtn = document.getElementById('signup-btn');
 const loginBtn = document.getElementById('login-btn');
 const signupForm = document.querySelector('#signup-form form');
 const loginForm = document.querySelector('#login-form form');
-const loginFormContainer = loginForm.parentElement;
+const loginFormContainer = document.querySelector('#login-form');
 const postContainer = document.getElementById('featured-articles');
 
 
@@ -86,10 +86,8 @@ async function fetchPosts() {
                     <p class="post-body text-gray-700 mb-4 truncate text-ellipsis white-space-nowrap">${post.body}</p>
                     <p class="text-sm text-gray-400">Tags: ${post.tags.join(', ')}</p>
                     <a href="post.html?id=${post.id}" class="text-red-600 block mt-4 w-fit hover:bg-red-600 transition text-white py-2 px-4 bg-red-700 rounded">Read More</a>
-                </div>`
-
+            </div>`
             postContainer.appendChild(postElement);
-
         });
 
     } catch (error) {

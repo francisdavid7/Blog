@@ -4,27 +4,168 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="CSS/style.css">
     <title>Full Blog Post</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <script src="js/post.js" defer></script>
+    <link href="/dist/output.css" rel="stylesheet">
 </head>
 
-<body class="bg-gray-100 text-gray-800 flex gap-6 p-6 items-flex-start">
-     
-    <div class="post-container w-[800px] p-6">
-        <!-- Post content will be dynamically inserted here -->
-    </div>
+<body class="bg-gray-100">
 
-    <aside>
-        <article class="bg-white p-4 rounded-lg shadow-md w-[300px] flex items-flex-start">
-           <img src="" alt="">
-           <div class="mt-4">
-            <h2 class="text-lg font-semibold">blog post title</h2>
-            <p class="text-gray-600">blog post body</p>
-            <p class="text-sm text-gray-400">Tags: blog, post, tags</p>
-           </div>
-        </article>
-    </aside>
+        <!-- Headers -->
+        
+        <!-- Header One -->
+        <div class="top-bar flex flex-wrap items-center p-4 text-lg">
+            <!-- Language Selector -->
+            <el-dropdown class="inline-block">
+                <button
+                    class="cursor-pointer inline-flex w-full items-center justify-center gap-x-1.5 rounded-md px-3 py-2 text-sm font-semibold inset-ring-1 inset-ring-white/5 hover:bg-white/20">
+                    <i class="fa-solid fa-globe"></i>
+                    <span>English</span>
+                    <svg viewBox="0 0 20 20" fill="currentColor" data-slot="icon" aria-hidden="true"
+                        class="-mr-1 size-5 text-gray-400">
+                        <path
+                            d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z"
+                            clip-rule="evenodd" fill-rule="evenodd" />
+                    </svg>
+                </button>
+        
+                <el-menu anchor="bottom end" popover
+                    class="border border-white w-56 origin-top-right rounded-md bg-red-600 outline-1 -outline-offset-1 outline-white/10 transition transition-discrete [--anchor-gap:--spacing(2)] data-closed:scale-95 data-closed:transform data-closed:opacity-0 data-enter:duration-100 data-enter:ease-out data-leave:duration-75 data-leave:ease-in">
+                    <div class="py-1">
+                        <a href="#"
+                            class="block px-4 py-2 text-sm text-white focus:bg-white/5 focus:text-white focus:outline-hidden">French</a>
+                        <a href="#"
+                            class="block px-4 py-2 text-sm text-white focus:bg-white/5 focus:text-white focus:outline-hidden">Spanish</a>
+                        <a href="#"
+                            class="block px-4 py-2 text-sm text-white focus:bg-white/5 focus:text-white focus:outline-hidden">Chinese</a>
+                        <a href="#"
+                            class="block px-4 py-2 text-sm text-white focus:bg-white/5 focus:text-white focus:outline-hidden">German</a>
+                        <a href="#"
+                            class="block px-4 py-2 text-sm text-white focus:bg-white/5 focus:text-white focus:outline-hidden">Japanese</a>
+                    </div>
+                </el-menu>
+            </el-dropdown>
+        
+            <div class="ml-auto flex items-center flex-wrap">
+                <a href="#" id="login-btn" class="mx-2 hover:text-red-600 transition">Login</a>
+                <a href="#" id="signup-btn"
+                    class="bg-red-600 text-white mx-2 hover:bg-red-700 transition py-2 px-4 rounded">Sign Up</a>
+            </div>
+        </div>
+        <!-- Header One Ends -->
+        
+        <!-- Login/Signup Modal -->
+        <div id="auth-modal" class="h-full fixed inset-0 flex items-center justify-center bg-black/50 z-100">
+            <div class="min-h-screen flex items-center justify-center">
+        
+                <div id="signup-form" class="bg-white shadow-lg rounded-lg p-8 md:w-[400px] max-w-full">
+                    <h2 class="text-2xl font-bold text-center text-gray-800 mb-6">Create an Account</h2>
+                    <form onsubmit="goToNewPage(event)" method="POST">
+                        <div class="mb-4">
+                            <label for="name" class="block text-sm font-medium text-gray-700">Full Name</label>
+                            <input type="text" id="name" name="name"
+                                class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-0 focus:outline-none focus:border-gray-200"
+                                placeholder="John Doe" required>
+                        </div>
+                        <div class="mb-4">
+                            <label for="email" class="block text-sm font-medium text-gray-700">Email Address</label>
+                            <input type="email" id="email" name="email"
+                                class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-0 focus:outline-none focus:border-gray-200"
+                                placeholder="example@domain.com" required>
+                        </div>
+                        <div class="mb-4">
+                            <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
+                            <input type="password" id="password" name="password"
+                                class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-0 focus:border-gray-200"
+                                placeholder="********" required>
+                        </div>
+                        <div class="mb-4">
+                            <label for="confirm-password" class="block text-sm font-medium text-gray-700">Confirm
+                                Password</label>
+                            <input type="password" id="confirm-password" name="confirm-password"
+                                class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-0 focus:outline-none focus:border-gray-200"
+                                placeholder="********" required>
+                        </div>
+                        <button type="submit"
+                            class="w-full bg-red-700 text-white py-2 px-4 rounded-md hover:bg-red-800 focus:outline-none focus:ring-2 focus:ring-red-700 focus:ring-offset-2">Sign
+                            Up</button>
+                    </form>
+                    <p class="text-center text-sm text-gray-600 mt-4">
+                        Already have an account? <a href="#" class="text-red-700 hover:text-red-800 hover:underline">Log
+                            in</a>
+                    </p>
+                </div>
+        
+                <div id="login-form" class="bg-white shadow-lg rounded-lg p-8 md:w-[400px] max-w-full">
+                    <h2 class="text-2xl font-bold text-center text-gray-800 mb-6">Sign In</h2>
+                    <form onsubmit="loginsucess(event)" method="POST">
+                        <div class="mb-4">
+                            <label for="email" class="block text-sm font-medium text-gray-700">Email Address</label>
+                            <input type="email" id="email" name="email"
+                                class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-0 focus:outline-none focus:border-gray-200"
+                                placeholder="example@domain.com" required>
+                        </div>
+                        <div class="mb-4">
+                            <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
+                            <input type="password" id="password" name="password"
+                                class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-0 focus:border-gray-200"
+                                placeholder="********" required>
+                        </div>
+        
+                        <button type="submit"
+                            class="w-full bg-red-700 text-white py-2 px-4 rounded-md hover:bg-red-800 focus:outline-none focus:ring-2 focus:ring-red-700 focus:ring-offset-2">Sign
+                            In</button>
+                    </form>
+                    <p class="text-center text-sm text-gray-600 mt-4">
+                        Already have an account? <a href="#" class="text-red-700 hover:text-red-800 hover:underline">Sign up</a>
+                    </p>
+                </div>
+        
+            </div>
+        </div>
+        
+        <!-- Header Two | Navigation -->
+        <header class="flex flex-wrap items-center justify-between p-4 bg-red-600 text-white">
+            <a href="index.html" class="text-3xl font-bold"><i class="fa-solid fa-blog"></i></a>
+            <nav class="hidden md:flex text-xl">
+                <a href="#" class="mx-2 hover:text-red-300 transition">Blogs</a>
+                <a href="#" class="mx-2 hover:text-red-300 transition">Newsletters</a>
+                <a href="#" class="mx-2 hover:text-red-300 transition">Videos</a>
+                <a href="#" class="mx-2 hover:text-red-300 transition">Podcasts</a>
+                <a href="#" class="mx-2 hover:text-red-300 transition">Resources</a>
+            </nav>
+        
+            <div class="search flex items-center mt-4 md:mt-0">
+                <input type="text" placeholder="Search..."
+                    class="p-2 rounded outline-none border border-white focus:border-red-300 transition">
+                <button class="cursor-pointer p-2 bg-white text-red-600 rounded hover:bg-gray-200"><i
+                        class="fa-solid fa-magnifying-glass"></i></button>
+            </div>
+        </header>
+        <!-- Header section ends -->
+
+    <main class="text-gray-800 flex md:flex-row gap-6 p-8 items-start flex-col">
+        <div class="post-container max-w-full w-[800px]">
+            <!-- Post content will be dynamically inserted here -->
+        </div>
+
+        <aside class="recent-posts md:w-[500px] w-full bg-white/50 p-6 rounded-lg shadow-md">
+            <h2 class="text-xl font-bold mb-4 text-blue-900">Recent Posts</h2>
+            <article class="bg-white p-4 rounded-lg shadow-md w-full flex items-start">
+            <img src="" alt="">
+            <div class="mt-4">
+                <h2 class="text-lg font-semibold">blog post title</h2>
+                <p class="text-gray-600">blog post body</p>
+                <p class="text-sm text-gray-400">Tags: blog, post, tags</p>
+            </div>
+            </article>
+        </aside>
+    </main>
 </body>
 
 </html>
