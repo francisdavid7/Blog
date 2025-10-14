@@ -7,13 +7,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
         integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="CSS/style.css">
     <title>Full Blog Post</title>
     <script src="js/post.js" defer></script>
-    <link href="/dist/output.css" rel="stylesheet">
+    <link rel="stylesheet" href="src/output.css">
+    <link rel="stylesheet" href="CSS/style.css">
 </head>
 
-<body class="bg-gray-100">
+<body>
 
         <!-- Headers -->
         
@@ -153,16 +153,18 @@
             <!-- Post content will be dynamically inserted here -->
         </div>
 
-        <aside class="recent-posts md:w-[500px] w-full bg-white/50 p-6 rounded-lg shadow-md">
+        <aside class="md:w-[500px] w-full bg-white/50 p-6 rounded-lg shadow-md">
             <h2 class="text-xl font-bold mb-4 text-blue-900">Recent Posts</h2>
-            <article class="bg-white p-4 rounded-lg shadow-md w-full flex items-start">
-            <img src="" alt="">
-            <div class="mt-4">
-                <h2 class="text-lg font-semibold">blog post title</h2>
-                <p class="text-gray-600">blog post body</p>
-                <p class="text-sm text-gray-400">Tags: blog, post, tags</p>
+            <div class="recent-posts">
+                <article class="bg-white p-4 rounded-lg shadow-md w-full flex items-start">
+                    <img src="" alt="">
+                    <div class="mt-4">
+                        <h2 class="text-lg font-semibold">blog post title</h2>
+                        <p class="text-gray-600">blog post body</p>
+                        <p class="text-sm text-gray-400">Tags: blog, post, tags</p>
+                    </div>
+                </article>
             </div>
-            </article>
         </aside>
     </main>
 </body>
