@@ -24,7 +24,7 @@ async function fetchPost() {
 
     SinglePostContainer.innerHTML = `
       <div class="bg-white p-6 rounded-lg shadow-md mb-6">
-        <img class="w-full h-[500px] object-cover rounded mb-4" src="${imageUrl}" alt="${post.tags[0] || 'blog image'}">
+        <img class="w-full h-[300px] sm:h-[500px] object-cover rounded mb-4" src="${imageUrl}" alt="${post.tags[0] || 'blog image'}">
         <h2 class="text-2xl font-bold mb-2">${post.title}</h2>
         <p class="text-gray-600 mb-4">${post.body}</p>
         <p class="text-sm text-gray-400">Tags: ${post.tags.join(', ')}</p>
