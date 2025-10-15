@@ -1,5 +1,3 @@
-import accessKey from "../config";
-
 const SinglePostContainer = document.querySelector('.post-container');
 const searchParams = new URLSearchParams(window.location.search);
 const postId = searchParams.get('id');
@@ -12,6 +10,8 @@ async function fetchPost() {
     }
 
     // Fetch blog images
+    const accessKey = "3UbGku0DL1R6vHMJxgQsJx26B4YsOkaFd-vFadyYZpA";
+
     const imageResponse = await fetch(`https://api.unsplash.com/photos/random?count=9&query=blog&client_id=${accessKey}`);
     const imageData = await imageResponse.json();
 
@@ -45,6 +45,8 @@ const asidePosts = document.querySelector('.recent-posts');
 // Function to load recent posts in post.html
 async function loadRecentPosts() {
   try {
+    const accessKey = "3UbGku0DL1R6vHMJxgQsJx26B4YsOkaFd-vFadyYZpA";
+
     // Fetch images and posts
     const [imgRes, postRes] = await Promise.all([
       fetch(`https://api.unsplash.com/photos/random?count=5&query=blog&client_id=${accessKey}`),
