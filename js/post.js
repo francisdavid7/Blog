@@ -1,4 +1,4 @@
-const SinglePostContainer = document.querySelector('.post-container');
+const singPostContainer = document.querySelector('.post-container');
 const searchParams = new URLSearchParams(window.location.search);
 const postId = searchParams.get('id');
 
@@ -22,7 +22,7 @@ async function fetchPost() {
 
     const imageUrl = imageData[postId]?.urls.small || 'https://via.placeholder.com/300';
 
-    SinglePostContainer.innerHTML = `
+    singPostContainer.innerHTML = `
       <div class="bg-white p-6 rounded-lg shadow-md mb-6">
         <img class="w-full h-[300px] sm:h-[500px] object-cover rounded mb-4" src="${imageUrl}" alt="${post.tags[0] || 'blog image'}">
         <h2 class="text-2xl font-bold mb-2">${post.title}</h2>
@@ -33,7 +33,7 @@ async function fetchPost() {
     `;
   } catch (error) {
     console.error('Error fetching post:', error);
-    SinglePostContainer.innerHTML = '<p class="text-red-500">Error loading post. Please try again.</p>';
+    singPostContainer.innerHTML = '<p class="text-red-500">Error loading post. Please try again.</p>';
   }
 }
 
