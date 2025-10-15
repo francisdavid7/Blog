@@ -1,3 +1,5 @@
+import accessKey from "../config";
+
 const authModal = document.getElementById('auth-modal');
 const signupBtn = document.getElementById('signup-btn');
 const loginBtn = document.getElementById('login-btn');
@@ -61,8 +63,6 @@ loginFormContainer.addEventListener('click', (e) => {
 async function fetchPosts() {
     try {
         // Fetch images
-        const accessKey = "3UbGku0DL1R6vHMJxgQsJx26B4YsOkaFd-vFadyYZpA";
-
         const imageResponse = await fetch(`https://api.unsplash.com/photos/random?count=9&query=blog&client_id=${accessKey}`);
         const imageData = await imageResponse.json();
         console.log(imageData);
