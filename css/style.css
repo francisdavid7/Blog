@@ -18,3 +18,33 @@ body {
     opacity: 1; /* Show modal */
     pointer-events: auto; /* Enable interactions */
 }
+
+.anime {
+    transition: .5s;
+    transform: translateY(100px);
+    opacity: 0;
+}
+
+.anime.show-animation {
+    transform: none;
+    opacity: 1;
+}
+
+main .content i.anime {
+    transform: translateY(-100px);
+}
+
+main .content i.anime.show-animation {
+    transform: none;
+    opacity: 1;
+}
+
+main .content p.anime {
+    transition-delay: .2s;
+}
+
+main .content h1.anime.show-animation,
+main .content p.anime.show-animation {
+    transform: none;
+    opacity: 1;
+}

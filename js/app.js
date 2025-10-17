@@ -5,6 +5,7 @@ const signupForm = document.querySelector('#signup-form form');
 const loginForm = document.querySelector('#login-form form');
 const loginFormContainer = document.querySelector('#login-form');
 const postContainer = document.getElementById('featured-articles');
+const elementsToObserve = document.querySelectorAll('.anime');
 
 
 // Show modal on signup button click
@@ -77,7 +78,7 @@ async function fetchPosts() {
 
             const imageUrl = imageData[index]?.urls.small || 'https://via.placeholder.com/300';
 
-            postElement.className = 'bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition';
+            postElement.className = 'anime bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition';
 
             postElement.innerHTML = `<img src="${imageUrl}" alt="Article 4" class="w-full h-48 object-cover">
 
@@ -96,3 +97,15 @@ async function fetchPosts() {
 }
 
 fetchPosts();
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('show-animation');
+        } else {
+            entry.target.classList.remove('show-animation');
+        }
+    });
+}, {});
+
+elementsToObserve.forEach((el) => observer.observe(el));
