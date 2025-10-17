@@ -78,7 +78,7 @@ async function fetchPosts() {
 
             const imageUrl = imageData[index]?.urls.small || 'https://via.placeholder.com/300';
 
-            postElement.className = 'anime bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition';
+            postElement.className = 'bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition';
 
             postElement.innerHTML = `<img src="${imageUrl}" alt="Article 4" class="w-full h-48 object-cover">
 

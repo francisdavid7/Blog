@@ -63,7 +63,7 @@ async function loadRecentPosts() {
       const asideImageUrl = imageData[i]?.urls.thumb || 'https://via.placeholder.com/100';
 
       const article = document.createElement('article');
-      article.className = "anime bg-white p-4 rounded-lg shadow-md w-full flex items-start gap-3 mb-3";
+      article.className = "bg-white p-4 rounded-lg shadow-md w-full flex items-start gap-3 mb-3";
 
       article.innerHTML = `
         <img src="${asideImageUrl}" alt="${post.title}" class="w-20 h-20 object-cover rounded">
